@@ -1,8 +1,11 @@
 package com.example.model;
 
+import com.samskivert.mustache.Mustache;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  * WelcomeCustomer
@@ -16,15 +19,15 @@ public class WelcomeCustomer {
         return "nabi";
 
     }
-    // @ModelAttribute("wrapped")
-    // public Mustache.Lambda wrapped(Model model){
-    //     return (frag, out) -> {
-    //         String bodystring = frag.execute();
-    //         System.out.println("bodystring :" + bodystring);
-    //         out.append(bodystring);
-    //         System.out.println("out.append" + out.append(bodystring));
-    //     };
-    // }
+    @ModelAttribute("wrapped")
+    public Mustache.Lambda wrapped(Model model){
+        return (frag, out) -> {
+            String bodystring = frag.execute();
+            System.out.println("bodystring :" + bodystring);
+            out.append(bodystring);
+            System.out.println("out.append" + out.append(bodystring));
+        };
+    }
     
     
 
